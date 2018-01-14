@@ -26,6 +26,7 @@ var injectForm = function(visible) {
 };
 
 var printResult = function(elementId, sniffedValue){
+  console.log("omri:" + sniffedValue );
   document.getElementById("sniffed_" + elementId).innerHTML = "<b>" + sniffedValue + "</b>";
 };
 
